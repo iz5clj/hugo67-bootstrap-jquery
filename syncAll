@@ -1,0 +1,7 @@
+#!/bin/bash
+SSHCONFIG=ocean01
+DIR=my/directory/to/remioteserver   # the directory where your web site files should go
+
+rm -Rf public/
+hugo && rsync -avz --delete public/ ${SSHCONFIG}:${DIR}
+
