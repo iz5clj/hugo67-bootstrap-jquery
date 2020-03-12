@@ -1,0 +1,9 @@
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+{{- $jquery := resources.Get "node_modules/jquery/dist/jquery.js" -}}
+{{- $popper := resources.Get "node_modules/popper.js/dist/umd/popper.js" -}}
+{{- $bootstrap := resources.Get "node_modules/bootstrap/dist/js/bootstrap.js" -}}
+{{- $global_js := slice $jquery $popper $bootstrap | resources.Concat "js/global.js" | minify | fingerprint -}}
+<script type="text/javascript" src="{{ $global_js.Permalink }}" integrity="{{ $global_js.Data.Integrity }}"></script>
+
+{{- $custom := resources.Get "js/custom.js" | fingerprint -}}
+<script type="text/javascript" src="{{ $custom.Permalink }}" integrity="{{ $custom.Data.Integrity }}"></script>

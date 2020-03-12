@@ -1,0 +1,15 @@
+{
+    "baseURL": "https://example.com/",
+    "languageCode": "en-us",
+    "title": "My amazing new website",
+    "disableHugoGeneratorInject": true,
+    "disableKinds": ["taxonomy", "taxonomyTerm"],
+    "params": {
+        "author": "Michel Sabatino ms@auxe.net",
+        "description": "This is the description of the website"
+    }
+}
+
+
+
+
