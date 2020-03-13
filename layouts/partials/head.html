@@ -1,13 +1,12 @@
-<head>
-    <meta charset="utf-8">
-    <meta name="author" content="Michel Sabatino">
-    <meta name="description" content="{{ .Site.Param "description" }}">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="{{ .Site.Param "description" }}">
+<meta name="author" content="{{ .Site.Param "author" }}">
 
-    <title>{{ .Site.Title }}</title>
+<title>{{ .Site.Title }}</title>
 
-    {{ "<!-- Main Stylesheet -->" | safeHTML }}
-    {{- $stylesScss := resources.Get "scss/style.scss" -}}
-    {{- $options := (dict "targetPath" "css/styles.css") -}}
-    {{- $stylesCss := $stylesScss | resources.ToCSS $options | minify | fingerprint -}}
-    <link rel="stylesheet" href="{{ $stylesCss.Permalink }}" integrity="{{ $stylesCss.Data.Integrity }}" media="screen">
-</head>
+{{ "<!-- Main Stylesheet -->" | safeHTML }}
+{{- $stylesScss := resources.Get "scss/style.scss" -}}
+{{- $options := (dict "targetPath" "css/styles.css") -}}
+{{- $stylesCss := $stylesScss | resources.ToCSS $options | minify | fingerprint -}}
+<link rel="stylesheet" href="{{ $stylesCss.Permalink }}" integrity="{{ $stylesCss.Data.Integrity }}" media="screen">

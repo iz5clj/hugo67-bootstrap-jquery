@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
-    {{- partial "head.html" . -}}
+    <head>
+        {{ partial "head.html" . }}
+    </head>
     <body>
-        {{- partial "header.html" . -}}
-        {{- block "main" . }}{{- end }}
-        {{- partial "footer.html" . -}}
+        {{ "<!-- Header with navbar -->" | safeHTML }}
+        {{ partial "header.html" . }}
+        {{ "<!-- END - Header with navbar -->" | safeHTML }}
 
-        {{- partial "javascript.html" -}}
+        {{ "<!-- Main block -->" | safeHTML }}
+        {{ block "main" . }} {{- end }}
+        {{ "<!-- END - Main block -->" | safeHTML }}
+
+        {{ "<!-- Footer -->" | safeHTML }}
+        {{ partial "footer.html" . }}
+        {{ "<!-- END - Footer -->" | safeHTML }}
+
+        {{ "<!-- Javascript -->" | safeHTML }}
+        {{ partial "javascript.html" }}
+        {{ "<!-- Extra Javascript -->" | safeHTML }}
         {{ block "extra_javascript" . }} {{ end }}
+        {{ "<!-- END - Javascript -->" | safeHTML }}
+
     </body>
 </html>
